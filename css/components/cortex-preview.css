@@ -1,0 +1,417 @@
+/* ========================================
+   Cortex Preview — Overlay style with settings, tabs, file view
+   Mirrors real CortexOverlay + CortexUpdateIndicator
+   ======================================== */
+
+.cortex-preview {
+  width: 100%;
+  max-width: 480px;
+  min-width: 0;
+  height: 420px;
+  margin: 0 auto;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(30, 32, 40, 0.85);
+  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(25px);
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.2),
+    0 2px 12px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Settings bar — toggle + frequency ── */
+.cortex-preview__settings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(35, 38, 48, 0.55);
+}
+
+.cortex-preview__toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cortex-preview__toggle-track {
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  position: relative;
+  cursor: default;
+  transition: background 0.25s ease;
+}
+
+.cortex-preview__toggle-track--on {
+  background: rgba(102, 126, 234, 0.5);
+}
+
+.cortex-preview__toggle-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.25s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.cortex-preview__toggle-track--on .cortex-preview__toggle-thumb {
+  transform: translateX(16px);
+}
+
+.cortex-preview__toggle-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.cortex-preview__frequency {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.cortex-preview__freq-btn {
+  padding: 0.3rem 0.75rem;
+  border-radius: 14px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.cortex-preview__freq-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.cortex-preview__freq-btn--active {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.25), rgba(118, 75, 162, 0.25));
+  border-color: rgba(102, 126, 234, 0.3);
+  color: #a5b4fc;
+}
+
+/* ── Tabs ── */
+.cortex-preview__tabs {
+  display: flex;
+  padding: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cortex-preview__tab {
+  padding: 0.7rem 1.2rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.25s ease, background 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+
+.cortex-preview__tab:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.cortex-preview__tab--active {
+  color: #a5b4fc;
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.cortex-preview__tab--active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
+  right: 1rem;
+  height: 2px;
+  border-radius: 2px;
+  background: #667eea;
+  box-shadow: 0 0 8px rgba(102, 126, 234, 0.3);
+}
+
+.cortex-preview__tab-icon {
+  display: flex;
+  align-items: center;
+}
+
+.cortex-preview__tab-icon svg {
+  opacity: 0.7;
+}
+
+.cortex-preview__tab--active .cortex-preview__tab-icon svg {
+  opacity: 1;
+  stroke: #a5b4fc;
+}
+
+/* ── Content wrapper ── */
+.cortex-preview__content {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ── Panels ── */
+.cortex-preview__panel {
+  min-height: 0;
+  height: 100%;
+  padding: 1rem 1.4rem;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  transform: translateY(8px);
+}
+
+.cortex-preview__panel--active {
+  opacity: 1;
+  pointer-events: auto;
+  position: relative;
+  transform: translateY(0);
+}
+
+.cortex-preview__perspective {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.25);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* File view — monospace, like reading a text file */
+.cortex-preview__file {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+  max-height: 240px;
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.cortex-preview__file-line {
+  display: block;
+  padding: 0.15rem 0;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.cortex-preview__file-line--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cortex-preview__file-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: #a5b4fc;
+  margin-left: 1px;
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+/* ── Status Bar ── */
+.cortex-preview__status {
+  padding: 0.5rem 1.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cortex-preview__char-count {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.3);
+  font-variant-numeric: tabular-nums;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.cortex-preview__status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.cortex-preview__status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 4px rgba(34, 197, 94, 0.4);
+}
+
+/* ── CortexUpdateIndicator — pill at bottom ── */
+.cortex-preview__indicator {
+  position: absolute;
+  bottom: 42px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(45, 48, 58, 0.85);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(120, 90, 220, 0.25);
+  border-radius: 20px;
+  padding: 0.3rem 0.85rem;
+  z-index: 10;
+}
+
+.cortex-preview__indicator-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(120, 90, 220, 0.8);
+  animation: cortexPulse 1.5s infinite;
+}
+
+.cortex-preview__indicator-text {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+}
+
+/* ── Animations ── */
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@keyframes cortexPulse {
+  0%, 100% { opacity: 0.6; box-shadow: 0 0 0 0 rgba(120, 90, 220, 0.4); }
+  50% { opacity: 1; box-shadow: 0 0 8px 2px rgba(120, 90, 220, 0.3); }
+}
+
+/* ── Light Mode ── */
+:root[data-theme="light"] .cortex-preview {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.08),
+    0 2px 12px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+:root[data-theme="light"] .cortex-preview__settings {
+  background: rgba(245, 247, 250, 0.7);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+:root[data-theme="light"] .cortex-preview__toggle-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="light"] .cortex-preview__toggle-track--on {
+  background: rgba(79, 120, 230, 0.45);
+}
+
+:root[data-theme="light"] .cortex-preview__toggle-label {
+  color: rgba(58, 58, 74, 0.6);
+}
+
+:root[data-theme="light"] .cortex-preview__freq-btn {
+  color: rgba(58, 58, 74, 0.5);
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="light"] .cortex-preview__freq-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: rgba(58, 58, 74, 0.7);
+}
+
+:root[data-theme="light"] .cortex-preview__freq-btn--active {
+  background: linear-gradient(135deg, rgba(79, 120, 230, 0.12), rgba(118, 75, 162, 0.12));
+  border-color: rgba(79, 120, 230, 0.3);
+  color: #4f46e5;
+}
+
+:root[data-theme="light"] .cortex-preview__tabs {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+:root[data-theme="light"] .cortex-preview__tab {
+  color: rgba(58, 58, 74, 0.5);
+}
+
+:root[data-theme="light"] .cortex-preview__tab:hover {
+  color: rgba(58, 58, 74, 0.75);
+}
+
+:root[data-theme="light"] .cortex-preview__tab--active {
+  color: #4f46e5;
+  background: rgba(79, 120, 230, 0.06);
+}
+
+:root[data-theme="light"] .cortex-preview__tab--active .cortex-preview__tab-icon svg {
+  stroke: #4f46e5;
+}
+
+:root[data-theme="light"] .cortex-preview__perspective {
+  color: rgba(58, 58, 74, 0.35);
+  border-bottom-color: rgba(0, 0, 0, 0.04);
+}
+
+:root[data-theme="light"] .cortex-preview__file {
+  color: rgba(26, 26, 46, 0.8);
+}
+
+:root[data-theme="light"] .cortex-preview__file-cursor {
+  background: #4f46e5;
+}
+
+:root[data-theme="light"] .cortex-preview__status {
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+:root[data-theme="light"] .cortex-preview__char-count {
+  color: rgba(58, 58, 74, 0.4);
+}
+
+:root[data-theme="light"] .cortex-preview__status-badge {
+  color: rgba(58, 58, 74, 0.4);
+}
+
+:root[data-theme="light"] .cortex-preview__indicator {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(120, 90, 220, 0.2);
+}
+
+:root[data-theme="light"] .cortex-preview__indicator-text {
+  color: rgba(58, 58, 74, 0.6);
+}
+
+@media (max-width: 600px) {
+  .cortex-preview__panel { min-height: 220px; }
+  .cortex-preview__settings { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+}

@@ -1,0 +1,81 @@
+<!-- ==================== Hero — Splash Terminal ==================== -->
+<section class="hero" id="hero">
+  <div class="hero__content fade-up">
+    <div class="hero__badge">
+      <span class="hero__badge-dot"></span>
+      v0.3.1-alpha &mdash; Active Development
+    </div>
+
+    <h1 class="hero__title">
+      Your Persona,<br>
+      <span class="hero__title-gradient">Your Chapter</span>
+    </h1>
+
+    <p class="hero__subtitle">
+      A desktop application for creating AI companions with distinct personalities,
+      emotional depth, and persistent memory &mdash; one conversation at a time.
+    </p>
+
+    <!-- Splash terminal (permanent, slim) -->
+    <div class="splash" id="splash">
+      <div class="splash__glow"></div>
+      <div class="splash__titlebar">
+        <div class="splash__dots">
+          <span class="splash__dot splash__dot--red"></span>
+          <span class="splash__dot splash__dot--yellow"></span>
+          <span class="splash__dot splash__dot--green"></span>
+        </div>
+        <span class="splash__titlebar-text">PersonaUI — Starting Server</span>
+        <div class="splash__spinner"></div>
+      </div>
+      <!-- Centered branding overlay -->
+      <div class="splash__brand" id="splash-brand">
+        <span class="splash__brand-text">PersonaUI</span>
+        <span class="splash__brand-sub">Your Persona, <span class="splash__brand-highlight">Your Chapter</span></span>
+      </div>
+
+      <div class="splash__console" id="splash-console"></div>
+
+      <!-- Chat interface (shown after server start) -->
+      <div class="splash-chat" id="splash-chat">
+        <!-- Sidebar -->
+        <div class="splash-chat__sidebar" id="splash-chat-sidebar">
+          <div class="splash-chat__sidebar-title">Personas</div>
+          <div class="splash-chat__sidebar-item" data-persona="0">
+            <div class="splash-chat__sidebar-avatar">A</div>
+            <span class="splash-chat__sidebar-name">Aria</span>
+          </div>
+          <div class="splash-chat__sidebar-item" data-persona="1">
+            <div class="splash-chat__sidebar-avatar splash-chat__sidebar-avatar--nexus">N</div>
+            <span class="splash-chat__sidebar-name">Nexus</span>
+          </div>
+          <div class="splash-chat__sidebar-item" data-persona="2">
+            <div class="splash-chat__sidebar-avatar splash-chat__sidebar-avatar--kael">K</div>
+            <span class="splash-chat__sidebar-name">Kael</span>
+          </div>
+        </div>
+        <!-- Main chat area -->
+        <div class="splash-chat__main">
+          <div class="splash-chat__header">
+            <div class="splash-chat__avatar" id="splash-chat-avatar">A</div>
+            <div class="splash-chat__info">
+              <span class="splash-chat__name" id="splash-chat-name">Aria</span>
+              <span class="splash-chat__status"><span class="splash-chat__status-dot"></span> Online</span>
+            </div>
+          </div>
+          <div class="splash-chat__messages" id="splash-chat-messages"></div>
+          <div class="splash-chat__input-bar">
+            <span class="splash-chat__input-placeholder">Type a message...</span>
+            <svg class="splash-chat__send-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </div>
+        </div>
+        <!-- Fake cursor -->
+        <div class="splash-chat__cursor" id="splash-cursor">
+          <svg width="14" height="18" viewBox="0 0 14 18" fill="none"><path d="M0 0L13.2 9.6L5.4 10.2L8.4 17.4L5.4 18L2.4 10.8L0 14.4V0Z" fill="#fff" stroke="#000" stroke-width="0.5"/></svg>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</section>

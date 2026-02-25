@@ -1,0 +1,123 @@
+    <!-- Persona Creation Preview — editor view (mirrors real app) -->
+    <div class="showcase__item fade-up">
+      <div class="persona-preview">
+        <!-- Header — editor style with back arrow -->
+        <div class="persona-preview__header">
+          <svg class="persona-preview__header-back" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          <span class="persona-preview__header-title">Persona Editor</span>
+        </div>
+
+        <!-- Scrollable editor body -->
+        <div class="persona-preview__body">
+          <!-- Avatar + Name + Age -->
+          <div class="persona-preview__top-row">
+            <div class="persona-preview__avatar-circle">?</div>
+            <div class="persona-preview__top-fields">
+              <div class="persona-preview__field">
+                <label class="persona-preview__label">Name</label>
+                <div class="persona-preview__input persona-preview__input--filled">
+                  <span data-field="name"></span>
+                </div>
+              </div>
+              <div class="persona-preview__inline-fields">
+                <div class="persona-preview__field persona-preview__field--half">
+                  <label class="persona-preview__label">Age</label>
+                  <div class="persona-preview__input">
+                    <span data-field="age"></span>
+                  </div>
+                </div>
+                <div class="persona-preview__field persona-preview__field--half">
+                  <label class="persona-preview__label">Gender</label>
+                  <div class="persona-preview__tags persona-preview__tags--small" data-group="gender">
+                    <span class="persona-preview__tag" data-value="männlich">männlich</span>
+                    <span class="persona-preview__tag" data-value="weiblich">weiblich</span>
+                    <span class="persona-preview__tag" data-value="divers">divers</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Persona Type -->
+          <div class="persona-preview__field">
+            <label class="persona-preview__label">Persona Type</label>
+            <div class="persona-preview__tags" data-group="type">
+              <span class="persona-preview__tag" data-value="Human">Human</span>
+              <span class="persona-preview__tag" data-value="Elf">Elf</span>
+              <span class="persona-preview__tag" data-value="Robot">Robot</span>
+              <span class="persona-preview__tag" data-value="Alien">Alien</span>
+              <span class="persona-preview__tag" data-value="Demon">Demon</span>
+              <span class="persona-preview__tag" data-value="Transcendent">Transcendent</span>
+            </div>
+          </div>
+
+          <!-- Core Traits -->
+          <div class="persona-preview__field">
+            <label class="persona-preview__label">Core Traits</label>
+            <div class="persona-preview__tags" data-group="traits">
+              <span class="persona-preview__tag" data-value="Curious">Curious</span>
+              <span class="persona-preview__tag" data-value="Wise">Wise</span>
+              <span class="persona-preview__tag" data-value="Protective">Protective</span>
+              <span class="persona-preview__tag" data-value="Analytical">Analytical</span>
+              <span class="persona-preview__tag" data-value="Mysterious">Mysterious</span>
+              <span class="persona-preview__tag" data-value="Friendly">Friendly</span>
+            </div>
+          </div>
+
+          <!-- Knowledge -->
+          <div class="persona-preview__field">
+            <label class="persona-preview__label">Knowledge</label>
+            <div class="persona-preview__tags" data-group="knowledge">
+              <span class="persona-preview__tag" data-value="Philosophy">Philosophy</span>
+              <span class="persona-preview__tag" data-value="Science">Science</span>
+              <span class="persona-preview__tag" data-value="Art">Art</span>
+              <span class="persona-preview__tag" data-value="History">History</span>
+              <span class="persona-preview__tag" data-value="Nature">Nature</span>
+            </div>
+          </div>
+
+          <!-- Expression -->
+          <div class="persona-preview__field">
+            <label class="persona-preview__label">Expression</label>
+            <div class="persona-preview__tags" data-group="expression">
+              <span class="persona-preview__tag" data-value="Poetic">Poetic</span>
+              <span class="persona-preview__tag" data-value="Direct">Direct</span>
+              <span class="persona-preview__tag" data-value="Playful">Playful</span>
+              <span class="persona-preview__tag" data-value="Formal">Formal</span>
+            </div>
+          </div>
+
+          <!-- Scenario (short text) -->
+          <div class="persona-preview__field">
+            <label class="persona-preview__label">Scenario</label>
+            <div class="persona-preview__input persona-preview__input--textarea">
+              <span data-field="scenario"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer — Create button -->
+        <div class="persona-preview__footer">
+          <span class="persona-preview__btn persona-preview__btn--create">Create Persona</span>
+        </div>
+      </div>
+      <div>
+        <span class="showcase__label">Persona Creation</span>
+        <h3 class="showcase__title">Design Your Companion</h3>
+        <p class="showcase__desc">Each persona is defined through an editor with real categories — type, traits, knowledge, expression style, scenario, and more.</p>
+        <ul class="showcase__list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Six types: Human, Elf, Robot, Alien, Demon, Transcendent Being
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Rich tag-based categories with active purple gradient selection
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Each persona gets its own isolated Cortex memory system
+          </li>
+        </ul>
+      </div>
+    </div>

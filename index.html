@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PersonaUI — Where AI Becomes Human</title>
+  <meta name="description" content="A desktop application for creating AI companions with distinct personalities, emotional depth, and persistent memory.">
+  <meta name="theme-color" content="#4f78e6">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="PersonaUI">
+  <meta property="og:description" content="Where AI becomes human — one conversation at a time.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sakushi-dev.github.io/PersonaUI-Page/">
+
+  <!-- FOUC Prevention -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem('personaui-page-theme');
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <!-- Fonts: Ubuntu (PersonaUI's primary font) + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components/chat-preview.css">
+  <link rel="stylesheet" href="css/components/cortex-preview.css">
+  <link rel="stylesheet" href="css/components/afterthought-preview.css">
+  <link rel="stylesheet" href="css/components/persona-preview.css">
+  <link rel="stylesheet" href="css/components/splash-hero.css">
+</head>
+<body>
+
+  <!-- Sections — loaded at runtime by loader.js -->
+  <div data-include="sections/background.html"></div>
+  <div data-include="sections/nav.html"></div>
+  <div data-include="sections/hero.html"></div>
+  <div data-include="sections/install.html"></div>
+  <div data-include="sections/features.html"></div>
+  <div data-include="sections/showcase.html"></div>
+  <div data-include="sections/tech.html"></div>
+  <div data-include="sections/changelog.html"></div>
+  <div data-include="sections/cta.html"></div>
+  <div data-include="sections/footer.html"></div>
+
+  <!-- Loader — fetches sections, then initializes component scripts -->
+  <script src="js/loader.js"></script>
+
+</body>
+</html>

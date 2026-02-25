@@ -1,0 +1,101 @@
+<!-- ==================== Quick Start ==================== -->
+<section class="section" id="install">
+  <div class="section__header fade-up">
+    <span class="section__label">Quick Start</span>
+    <h2 class="section__title">Get Running in Seconds</h2>
+    <p class="section__subtitle">Clone, run, done. The launcher handles everything for you.</p>
+  </div>
+
+  <div class="quick-start fade-up">
+    <!-- Single terminal window -->
+    <div class="quick-start__window">
+      <!-- Titlebar: dots → tabs → copy-all -->
+      <div class="quick-start__titlebar">
+        <div class="quick-start__dots">
+          <span class="quick-start__dot quick-start__dot--red"></span>
+          <span class="quick-start__dot quick-start__dot--yellow"></span>
+          <span class="quick-start__dot quick-start__dot--green"></span>
+        </div>
+        <div class="quick-start__tabs">
+          <button class="quick-start__tab quick-start__tab--active" data-qs="qs-oneliner">One-Liner</button>
+          <button class="quick-start__tab" data-qs="qs-windows">Windows</button>
+          <button class="quick-start__tab" data-qs="qs-manual">Manual</button>
+        </div>
+        <button class="quick-start__copy quick-start__copy-all" aria-label="Copy all commands">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span class="quick-start__copy-label">Copy</span>
+        </button>
+      </div>
+
+      <!-- One-Liner (single line, no per-line copy) -->
+      <div class="quick-start__body quick-start__body--active" id="qs-oneliner">
+        <div class="qs-line qs-line--single">
+          <code><span class="qs-prompt">$</span> <span class="qs-cmd">git clone</span> https://github.com/Sakushi-Dev/PersonaUI.git <span class="qs-op">&amp;&amp;</span> <span class="qs-cmd">cd</span> PersonaUI <span class="qs-op">&amp;&amp;</span> <span class="qs-cmd">.\bin\start.bat</span></code>
+        </div>
+      </div>
+
+      <!-- Windows (per-line copy) -->
+      <div class="quick-start__body" id="qs-windows">
+        <p class="qs-comment-line"># Clone the repository</p>
+        <div class="qs-line">
+          <code><span class="qs-prompt">$</span> <span class="qs-cmd">git clone</span> https://github.com/Sakushi-Dev/PersonaUI.git</code>
+          <button class="qs-line__copy" data-cmd="git clone https://github.com/Sakushi-Dev/PersonaUI.git" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
+        <p class="qs-comment-line"># Navigate to the folder</p>
+        <div class="qs-line">
+          <code><span class="qs-prompt">$</span> <span class="qs-cmd">cd</span> PersonaUI</code>
+          <button class="qs-line__copy" data-cmd="cd PersonaUI" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
+        <p class="qs-comment-line"># Launch — auto-installs Python 3.12, Node.js, builds frontend</p>
+        <div class="qs-line">
+          <code><span class="qs-prompt">$</span> <span class="qs-cmd">bin\start.bat</span></code>
+          <button class="qs-line__copy" data-cmd="bin\start.bat" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Manual (per-line copy) -->
+      <div class="quick-start__body" id="qs-manual">
+        <div class="qs-line">
+          <code><span class="qs-prompt">$</span> <span class="qs-cmd">git clone</span> https://github.com/Sakushi-Dev/PersonaUI.git</code>
+          <button class="qs-line__copy" data-cmd="git clone https://github.com/Sakushi-Dev/PersonaUI.git" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
+        <div class="qs-line">
+          <code><span class="qs-prompt">$</span> <span class="qs-cmd">cd</span> PersonaUI</code>
+          <button class="qs-line__copy" data-cmd="cd PersonaUI" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
+        <p class="qs-comment-line"># Create &amp; activate virtual environment</p>
+        <div class="qs-line">
+          <code><span class="qs-prompt">$</span> <span class="qs-cmd">python -m venv</span> .venv</code>
+          <button class="qs-line__copy" data-cmd="python -m venv .venv" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
+        <div class="qs-line">
+          <code><span class="qs-prompt">$</span> <span class="qs-cmd">.venv\Scripts\activate</span></code>
+          <button class="qs-line__copy" data-cmd=".venv\Scripts\activate" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
+        <p class="qs-comment-line"># Install &amp; run</p>
+        <div class="qs-line">
+          <code><span class="qs-prompt">$</span> <span class="qs-cmd">pip install -r</span> requirements.txt</code>
+          <button class="qs-line__copy" data-cmd="pip install -r requirements.txt" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
+        <div class="qs-line">
+          <code><span class="qs-prompt">$</span> <span class="qs-cmd">python src/init.py</span></code>
+          <button class="qs-line__copy" data-cmd="python src/init.py" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <p class="quick-start__note">Works on Windows. Installs Python 3.12, Node.js, and all dependencies for you.</p>
+
+    <!-- Bottom row: GitHub + Docs links -->
+    <div class="quick-start__links">
+      <a href="https://github.com/Sakushi-Dev/PersonaUI" class="quick-start__link" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12 24 5.37 18.63 0 12 0z"/></svg>
+        View on GitHub
+      </a>
+      <a href="https://github.com/Sakushi-Dev/PersonaUI/blob/main/.github/docs/00_Project_Summary.md" class="quick-start__link" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Read the Docs
+      </a>
+    </div>
+  </div>
+</section>

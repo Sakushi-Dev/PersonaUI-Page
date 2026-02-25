@@ -1,0 +1,339 @@
+/* ========================================
+   Afterthought Preview — 3-phase follow-up system
+   Mirrors real app: thinking pill → streamed follow-up message
+   No mood bar (doesn't exist in real app)
+   ======================================== */
+
+.afterthought-preview {
+  width: 100%;
+  max-width: 480px;
+  min-width: 0;
+  margin: 0 auto;
+  height: 420px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(30, 32, 40, 0.85);
+  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(25px);
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.2),
+    0 2px 12px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* ── Header ── */
+.afterthought-preview__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(17, 17, 22, 0.7);
+  flex-shrink: 0;
+}
+
+.afterthought-preview__header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.afterthought-preview__header-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.4);
+}
+
+.afterthought-preview__name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.afterthought-preview__header-tag {
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: rgba(102, 126, 234, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ── Messages area — chat-style with avatars ── */
+.afterthought-preview__messages {
+  flex: 1;
+  padding: 1rem 1.2rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  overflow: hidden;
+}
+
+/* Message row — avatar + bubble */
+.afterthought-preview__msg-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.55rem;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: atMsgIn 0.6s ease-out forwards;
+}
+
+.afterthought-preview__msg-row--user {
+  flex-direction: row-reverse;
+}
+
+.afterthought-preview__msg-row--ai {
+  flex-direction: row;
+}
+
+/* Afterthought follow-up has subtle purple tint */
+.afterthought-preview__msg-row--followup .afterthought-preview__msg--ai {
+  background: rgba(102, 126, 234, 0.08);
+  border-color: rgba(102, 126, 234, 0.2);
+}
+
+.afterthought-preview__msg-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.afterthought-preview__msg-avatar--ai {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.35);
+}
+
+.afterthought-preview__msg-avatar--user {
+  background: linear-gradient(135deg, #4f78e6, #4facfe);
+  box-shadow: 0 0 0 2px rgba(79, 120, 230, 0.3);
+}
+
+/* Bubble */
+.afterthought-preview__msg {
+  max-width: 72%;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  font-family: 'Ubuntu', 'Roboto', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.afterthought-preview__msg--user {
+  background: rgba(55, 58, 70, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(25px);
+  border-radius: 18px;
+  border-bottom-right-radius: 4px;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+.afterthought-preview__msg--ai {
+  background: rgba(45, 48, 58, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(25px);
+  border-radius: 18px;
+  border-bottom-left-radius: 4px;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+.afterthought-preview__msg-sender {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(40, 42, 52, 0.6);
+  padding: 0.12rem 0.5rem;
+  border-radius: 10px;
+  margin-bottom: 0.3rem;
+}
+
+.afterthought-preview__msg .non-verbal {
+  color: #e4ba00;
+  font-style: italic;
+}
+
+/* Typing cursor for streamed text */
+.afterthought-preview__stream-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: #a5b4fc;
+  margin-left: 2px;
+  animation: atBlink 1s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+/* ── Thinking Pill — CortexUpdateIndicator style ── */
+.afterthought-preview__thinking {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(45, 48, 58, 0.85);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  border-radius: 20px;
+  padding: 0.35rem 0.9rem;
+  margin: 0.4rem auto;
+  opacity: 0;
+  animation: atPillIn 0.4s ease-out forwards;
+}
+
+.afterthought-preview__thinking-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(102, 126, 234, 0.8);
+  animation: atDotPulse 1.5s infinite;
+}
+
+.afterthought-preview__thinking-text {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+}
+
+.afterthought-preview__thinking-timer {
+  display: flex;
+  align-items: center;
+  margin-left: 0.3rem;
+}
+
+.afterthought-preview__timer-ring {
+  width: 18px;
+  height: 18px;
+  transform: rotate(-90deg);
+}
+
+.afterthought-preview__timer-ring circle {
+  fill: none;
+  stroke-width: 2.5;
+}
+
+.afterthought-preview__timer-bg {
+  stroke: rgba(255, 255, 255, 0.08);
+}
+
+.afterthought-preview__timer-fill {
+  stroke: #667eea;
+  stroke-dasharray: 50.27;
+  stroke-dashoffset: 50.27;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s linear;
+}
+
+/* ── Animations ── */
+@keyframes atMsgIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes atPillIn {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes atDotPulse {
+  0%, 100% { opacity: 0.6; box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4); }
+  50% { opacity: 1; box-shadow: 0 0 8px 2px rgba(102, 126, 234, 0.3); }
+}
+
+@keyframes atBlink {
+  50% { opacity: 0; }
+}
+
+/* ── Light Mode ── */
+:root[data-theme="light"] .afterthought-preview {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.08),
+    0 2px 12px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+:root[data-theme="light"] .afterthought-preview__header {
+  background: rgba(245, 247, 250, 0.7);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+:root[data-theme="light"] .afterthought-preview__name {
+  color: #1a1a2e;
+}
+
+:root[data-theme="light"] .afterthought-preview__header-tag {
+  color: rgba(79, 120, 230, 0.8);
+}
+
+:root[data-theme="light"] .afterthought-preview__msg--user {
+  background: rgba(79, 120, 230, 0.1);
+  border-color: rgba(79, 120, 230, 0.2);
+  color: #1a1a2e;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+:root[data-theme="light"] .afterthought-preview__msg--ai {
+  background: rgba(240, 242, 248, 0.85);
+  border-color: rgba(0, 0, 0, 0.08);
+  color: #1a1a2e;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+:root[data-theme="light"] .afterthought-preview__msg-row--followup .afterthought-preview__msg--ai {
+  background: rgba(79, 120, 230, 0.06);
+  border-color: rgba(79, 120, 230, 0.15);
+}
+
+:root[data-theme="light"] .afterthought-preview__msg-sender {
+  color: rgba(58, 58, 74, 0.7);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+:root[data-theme="light"] .afterthought-preview__msg .non-verbal {
+  color: #b8960a;
+}
+
+:root[data-theme="light"] .afterthought-preview__stream-cursor {
+  background: #4f46e5;
+}
+
+:root[data-theme="light"] .afterthought-preview__thinking {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(79, 120, 230, 0.2);
+}
+
+:root[data-theme="light"] .afterthought-preview__thinking-text {
+  color: rgba(58, 58, 74, 0.6);
+}
+
+:root[data-theme="light"] .afterthought-preview__timer-bg {
+  stroke: rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 600px) {
+  .afterthought-preview { height: 360px; }
+  .afterthought-preview__messages { padding: 0.8rem; }
+  .afterthought-preview__msg { max-width: 85%; }
+}

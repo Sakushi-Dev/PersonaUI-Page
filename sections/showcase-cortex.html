@@ -1,0 +1,91 @@
+    <!-- Cortex Memory Preview — matches real overlay layout -->
+    <div class="showcase__item fade-up">
+      <div class="cortex-preview">
+        <!-- Settings bar — toggle + frequency selector -->
+        <div class="cortex-preview__settings">
+          <div class="cortex-preview__toggle">
+            <div class="cortex-preview__toggle-track cortex-preview__toggle-track--on">
+              <div class="cortex-preview__toggle-thumb"></div>
+            </div>
+            <span class="cortex-preview__toggle-label">Cortex enabled</span>
+          </div>
+          <div class="cortex-preview__frequency">
+            <button class="cortex-preview__freq-btn" data-freq="frequent">Frequent</button>
+            <button class="cortex-preview__freq-btn cortex-preview__freq-btn--active" data-freq="medium">Medium</button>
+            <button class="cortex-preview__freq-btn" data-freq="rare">Rare</button>
+          </div>
+        </div>
+
+        <!-- Tabs — Memory / Soul / Relationship -->
+        <div class="cortex-preview__tabs">
+          <button class="cortex-preview__tab cortex-preview__tab--active" data-tab="memory">
+            <span class="cortex-preview__tab-icon">
+              <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
+            </span>
+            Memory
+          </button>
+          <button class="cortex-preview__tab" data-tab="soul">
+            <span class="cortex-preview__tab-icon">
+              <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2C5.5 2 3 4.5 3 7c0 3.5 5 7 5 7s5-3.5 5-7c0-2.5-2.5-5-5-5z"/></svg>
+            </span>
+            Soul
+          </button>
+          <button class="cortex-preview__tab" data-tab="relationship">
+            <span class="cortex-preview__tab-icon">
+              <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 4a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM6 12a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/><line x1="8.5" y1="3.5" x2="7.5" y2="9.5"/></svg>
+            </span>
+            Relationship
+          </button>
+        </div>
+
+        <!-- File content panels -->
+        <div class="cortex-preview__content">
+          <div class="cortex-preview__panel cortex-preview__panel--active" data-panel="memory">
+            <div class="cortex-preview__perspective">Written from Aria's perspective</div>
+            <div class="cortex-preview__file"></div>
+          </div>
+          <div class="cortex-preview__panel" data-panel="soul">
+            <div class="cortex-preview__perspective">Written from Aria's perspective</div>
+            <div class="cortex-preview__file"></div>
+          </div>
+          <div class="cortex-preview__panel" data-panel="relationship">
+            <div class="cortex-preview__perspective">Written from Aria's perspective</div>
+            <div class="cortex-preview__file"></div>
+          </div>
+        </div>
+
+        <!-- Status bar -->
+        <div class="cortex-preview__status">
+          <span class="cortex-preview__char-count">2,847 / 8,000</span>
+          <span class="cortex-preview__status-badge">
+            <span class="cortex-preview__status-dot"></span>
+            Auto-update
+          </span>
+        </div>
+
+        <!-- CortexUpdateIndicator pill -->
+        <div class="cortex-preview__indicator" style="display:none;">
+          <span class="cortex-preview__indicator-dot"></span>
+          <span class="cortex-preview__indicator-text">Memory updating...</span>
+        </div>
+      </div>
+      <div>
+        <span class="showcase__label">Persistent Memory</span>
+        <h3 class="showcase__title">Three Files, One Inner World</h3>
+        <p class="showcase__desc">Each persona maintains three files that represent its evolving inner world — written from its own perspective and updated autonomously.</p>
+        <ul class="showcase__list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <strong>Memory</strong> — Recollections of past conversations and shared moments
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <strong>Soul</strong> — Evolving self-understanding, values, and personal growth
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <strong>Relationship</strong> — How the persona perceives and relates to you over time
+          </li>
+        </ul>
+      </div>
+    </div>

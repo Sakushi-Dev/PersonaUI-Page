@@ -1,0 +1,291 @@
+/* ========================================
+   Persona Preview — Editor view (mirrors real PersonaSettingsOverlay)
+   Real categories: Type, Gender, Traits, Knowledge, Expression
+   Tag buttons with purple gradient active state
+   ======================================== */
+
+.persona-preview {
+  width: 100%;
+  max-width: 480px;
+  min-width: 0;
+  margin: 0 auto;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(30, 32, 40, 0.85);
+  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(25px);
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.2),
+    0 2px 12px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ── */
+.persona-preview__header {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 1.2rem;
+  background: rgba(30, 32, 40, 0.7);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.persona-preview__header-back {
+  color: rgba(255, 255, 255, 0.4);
+  cursor: default;
+  flex-shrink: 0;
+}
+
+.persona-preview__header-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ── Body (scrollable editor) ── */
+.persona-preview__body {
+  padding: 1rem 1.4rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow: visible;
+}
+
+/* Top row — avatar + name/age/gender */
+.persona-preview__top-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.persona-preview__avatar-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2.5px dashed rgba(102, 126, 234, 0.3);
+  background: rgba(102, 126, 234, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+  transition: all 0.4s ease;
+}
+
+.persona-preview__avatar-circle--filled {
+  border-style: solid;
+  border-color: rgba(102, 126, 234, 0.5);
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.25);
+}
+
+.persona-preview__top-fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.persona-preview__inline-fields {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.persona-preview__field--half {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Fields */
+.persona-preview__field {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: personaFieldIn 0.35s ease-out forwards;
+}
+
+.persona-preview__field:nth-child(1) { animation-delay: 0s; }
+.persona-preview__field:nth-child(2) { animation-delay: 0.05s; }
+.persona-preview__field:nth-child(3) { animation-delay: 0.1s; }
+.persona-preview__field:nth-child(4) { animation-delay: 0.15s; }
+.persona-preview__field:nth-child(5) { animation-delay: 0.2s; }
+.persona-preview__field:nth-child(6) { animation-delay: 0.25s; }
+
+.persona-preview__label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.3rem;
+}
+
+/* Input fields */
+.persona-preview__input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background: rgba(35, 38, 48, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: 'Ubuntu', 'Roboto', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
+  min-height: 34px;
+  transition: border-color 0.2s ease;
+}
+
+.persona-preview__input--filled {
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+.persona-preview__input--textarea {
+  min-height: 50px;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Tag buttons — real app style: padding 8px 16px, radius 20px */
+.persona-preview__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.persona-preview__tags--small {
+  gap: 0.3rem;
+}
+
+.persona-preview__tag {
+  padding: 0.4rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: default;
+  transition: all 0.25s ease;
+}
+
+.persona-preview__tags--small .persona-preview__tag {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.65rem;
+}
+
+/* Active tag — purple gradient to match real app */
+.persona-preview__tag--active {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+  border-color: rgba(102, 126, 234, 0.4);
+  color: #c4b5fd;
+  box-shadow: 0 0 12px rgba(102, 126, 234, 0.15);
+}
+
+/* ── Footer ── */
+.persona-preview__footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.65rem 1.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+
+.persona-preview__btn--create {
+  padding: 0.45rem 1.4rem;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  color: #a5b4fc;
+  cursor: default;
+  transition: all 0.2s ease;
+}
+
+@keyframes personaFieldIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Light Mode ── */
+:root[data-theme="light"] .persona-preview {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.08),
+    0 2px 12px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+:root[data-theme="light"] .persona-preview__header {
+  background: rgba(245, 247, 250, 0.7);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+:root[data-theme="light"] .persona-preview__header-back {
+  color: rgba(58, 58, 74, 0.4);
+}
+
+:root[data-theme="light"] .persona-preview__header-title {
+  color: #1a1a2e;
+}
+
+:root[data-theme="light"] .persona-preview__avatar-circle {
+  border-color: rgba(79, 120, 230, 0.25);
+  background: rgba(79, 120, 230, 0.04);
+  color: rgba(58, 58, 74, 0.35);
+}
+
+:root[data-theme="light"] .persona-preview__label {
+  color: rgba(58, 58, 74, 0.5);
+}
+
+:root[data-theme="light"] .persona-preview__input {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #1a1a2e;
+}
+
+:root[data-theme="light"] .persona-preview__input--filled {
+  border-color: rgba(79, 120, 230, 0.3);
+}
+
+:root[data-theme="light"] .persona-preview__input--textarea {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="light"] .persona-preview__tag {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: rgba(58, 58, 74, 0.6);
+}
+
+:root[data-theme="light"] .persona-preview__tag--active {
+  background: linear-gradient(135deg, rgba(79, 120, 230, 0.12), rgba(118, 75, 162, 0.12));
+  border-color: rgba(79, 120, 230, 0.3);
+  color: #4f46e5;
+  box-shadow: 0 0 10px rgba(79, 120, 230, 0.1);
+}
+
+:root[data-theme="light"] .persona-preview__footer {
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+:root[data-theme="light"] .persona-preview__btn--create {
+  background: linear-gradient(135deg, rgba(79, 120, 230, 0.12), rgba(118, 75, 162, 0.12));
+  border-color: rgba(79, 120, 230, 0.25);
+  color: #4f46e5;
+}
+
+@media (max-width: 600px) {
+  .persona-preview__body { padding: 0.8rem; }
+  .persona-preview__top-row { flex-direction: column; align-items: center; }
+  .persona-preview__avatar-circle { width: 56px; height: 56px; font-size: 1.1rem; }
+  .persona-preview__inline-fields { flex-direction: column; }
+}

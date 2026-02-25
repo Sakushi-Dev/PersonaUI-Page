@@ -1,0 +1,69 @@
+<!-- ==================== Changelog ==================== -->
+<section class="section" id="changelog">
+  <div class="section__header fade-up">
+    <span class="section__label">Updates</span>
+    <h2 class="section__title">Changelog</h2>
+    <p class="section__subtitle">What's new and what's been improved.</p>
+  </div>
+
+  <div class="changelog fade-up">
+    <!-- Version selector dropdown -->
+    <div class="changelog__selector">
+      <select class="changelog__select" id="changelog-select">
+        <option value="v0.3.1-alpha" selected>v0.3.1-alpha — 2026-02-24</option>
+        <option value="v0.3.0-alpha">v0.3.0-alpha — 2026-02-24</option>
+        <option value="v0.2.2-alpha">v0.2.2-alpha — 2026-02-24</option>
+        <option value="v0.2.1-alpha">v0.2.1-alpha — 2026-02-24</option>
+        <option value="v0.2.0-alpha">v0.2.0-alpha — 2026-02-23</option>
+        <option value="v0.1.0-alpha">v0.1.0-alpha — 2026-01-15</option>
+      </select>
+      <svg class="changelog__select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+
+    <!-- Entries (only one visible at a time) -->
+    <!-- Entries wrapper (fixed height, entries stacked) -->
+    <div class="changelog__entries">
+      <div class="changelog__entry changelog__entry--active" data-version="v0.3.1-alpha">
+        <div class="changelog__meta">
+          <span class="changelog__tag changelog__tag--refactor">refactor</span>
+        </div>
+        <p class="changelog__summary">Project structure overhaul: cleaned up root directory by moving docs to .github/docs/, tests to src/tests/, config files to config/. Backward-compatible update check with root fallback. All path references updated.</p>
+      </div>
+
+      <div class="changelog__entry" data-version="v0.3.0-alpha">
+        <div class="changelog__meta">
+          <span class="changelog__tag changelog__tag--improvement">improvement</span>
+        </div>
+        <p class="changelog__summary">Reset screen overhaul with selectable reset options and modernized UI. Chat clear now resets Cortex files and cycle state. Session and persona deletion properly cleans up all related data.</p>
+      </div>
+
+      <div class="changelog__entry" data-version="v0.2.2-alpha">
+        <div class="changelog__meta">
+          <span class="changelog__tag changelog__tag--fix">fix</span>
+        </div>
+        <p class="changelog__summary">Update script overhaul: self-copy guard, PowerShell-based JSON version parsing, git reset --hard for clean updates, added frontend rebuild step.</p>
+      </div>
+
+      <div class="changelog__entry" data-version="v0.2.1-alpha">
+        <div class="changelog__meta">
+          <span class="changelog__tag changelog__tag--fix">fix</span>
+        </div>
+        <p class="changelog__summary">Cortex trigger fix: Resolved settings desync, redesigned CortexUpdateIndicator with glass-morphism, extended ContextBar with cortex progress display.</p>
+      </div>
+
+      <div class="changelog__entry" data-version="v0.2.0-alpha">
+        <div class="changelog__meta">
+          <span class="changelog__tag changelog__tag--redesign">redesign</span>
+        </div>
+        <p class="changelog__summary">Complete frontend redesign with React SPA, Cortex memory system, and new onboarding flow.</p>
+      </div>
+
+      <div class="changelog__entry" data-version="v0.1.0-alpha">
+        <div class="changelog__meta">
+          <span class="changelog__tag changelog__tag--initial">initial</span>
+        </div>
+        <p class="changelog__summary">Initial release of PersonaUI with basic chat, persona system, and prompt engine.</p>
+      </div>
+    </div>
+  </div>
+</section>
