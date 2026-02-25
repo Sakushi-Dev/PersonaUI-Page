@@ -76,12 +76,13 @@
   color: rgba(255, 255, 255, 0.35);
   flex-shrink: 0;
   transition: all 0.4s ease;
+  overflow: hidden;
 }
 
 .persona-preview__avatar-circle--filled {
   border-style: solid;
   border-color: rgba(102, 126, 234, 0.5);
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: transparent;
   color: #fff;
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.25);
 }

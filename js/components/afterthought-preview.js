@@ -15,6 +15,12 @@
   var thinkingTextEl = preview.querySelector('.afterthought-preview__thinking-text');
   var timerFillEl = preview.querySelector('.afterthought-preview__timer-fill');
 
+  var AVATAR_SRC = 'public/avatar/elf.jpeg';
+  var headerAvatarEl = preview.querySelector('.afterthought-preview__header-avatar');
+  if (headerAvatarEl) {
+    headerAvatarEl.innerHTML = '<img src="' + AVATAR_SRC + '" alt="Aria" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
+  }
+
   var scenarios = [
     {
       user: 'I had a rough day today.',
@@ -55,15 +61,15 @@
     row.className = rowClass;
 
     var avatarClass = sender === 'ai' ? 'afterthought-preview__msg-avatar--ai' : 'afterthought-preview__msg-avatar--user';
-    var initial = sender === 'ai' ? 'A' : 'Y';
+    var avatarContent = sender === 'ai' ? '<img src=\"' + AVATAR_SRC + '\" alt=\"Aria\" style=\"width:100%;height:100%;object-fit:cover;border-radius:50%;\">' : 'Y';
 
     var senderHtml = '';
     if (sender === 'ai') {
-      senderHtml = '<div class="afterthought-preview__msg-sender">Aria</div>';
+      senderHtml = '<div class=\"afterthought-preview__msg-sender\">Aria</div>';
     }
 
     row.innerHTML =
-      '<div class="afterthought-preview__msg-avatar ' + avatarClass + '">' + initial + '</div>' +
+      '<div class=\"afterthought-preview__msg-avatar ' + avatarClass + '\">' + avatarContent + '</div>' +
       '<div class="afterthought-preview__msg afterthought-preview__msg--' + sender + '">' +
         senderHtml +
         '<div class="afterthought-preview__msg-text">' + text + '</div>' +

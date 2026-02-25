@@ -98,9 +98,21 @@
     });
   }
 
-  function updateAvatar(initial, filled) {
+  var PERSONA_AVATARS = {
+    Aria: 'public/avatar/elf.jpeg',
+    Nexus: 'public/avatar/robot.jpeg',
+    Kael: 'public/avatar/demon.jpeg'
+  };
+
+  function updateAvatar(initial, filled, name) {
     if (!avatarCircle) return;
-    avatarCircle.textContent = initial;
+    var src = name ? PERSONA_AVATARS[name] : null;
+    if (filled && src) {
+      avatarCircle.innerHTML = '<img src="' + src + '" alt="' + name + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
+    } else {
+      avatarCircle.innerHTML = '';
+      avatarCircle.textContent = initial;
+    }
     if (filled) {
       avatarCircle.classList.add('persona-preview__avatar-circle--filled');
       avatarCircle.style.transform = 'scale(1.05)';
@@ -115,7 +127,7 @@
     if (ageField) ageField.textContent = '';
     if (scenarioField) scenarioField.textContent = '';
     resetAllTags();
-    updateAvatar('?', false);
+    updateAvatar('?', false, null);
   }
 
   async function animatePersona(persona) {
@@ -126,7 +138,7 @@
     await typeText(nameField, persona.name);
 
     // Update avatar with initial
-    updateAvatar(persona.initial, true);
+    updateAvatar(persona.initial, true, persona.name);
 
     // Type age
     await wait(300);

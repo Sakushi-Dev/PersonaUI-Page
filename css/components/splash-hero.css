@@ -559,13 +559,20 @@
 }
 
 /* ── Light Mode ── */
+/* Splash terminal phase intentionally keeps dark appearance in both themes.
+   Chat phase inside splash gets light styling (incl. titlebar). */
+
+:root[data-theme="light"] .splash__titlebar {
+  background: #eaecf0;
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+:root[data-theme="light"] .splash__titlebar-text {
+  color: #6a6a7a;
+}
+
 :root[data-theme="light"] .splash {
-  background: #f5f7fa;
   border-color: rgba(0, 0, 0, 0.1);
-  box-shadow:
-    0 4px 32px rgba(0, 0, 0, 0.1),
-    0 1px 3px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 :root[data-theme="light"] .splash--chat-mode {
@@ -577,55 +584,6 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
-:root[data-theme="light"] .splash__glow {
-  background: radial-gradient(
-    ellipse,
-    rgba(180, 142, 218, 0.15) 0%,
-    rgba(102, 126, 234, 0.1) 40%,
-    transparent 70%
-  );
-}
-
-:root[data-theme="light"] .splash__titlebar {
-  background: #eaecf0;
-  border-bottom-color: rgba(0, 0, 0, 0.08);
-}
-
-:root[data-theme="light"] .splash__titlebar-text {
-  color: #6a6a7a;
-}
-
-:root[data-theme="light"] .splash__brand-text {
-  color: #1a1a2e;
-}
-
-:root[data-theme="light"] .splash__brand-sub {
-  color: #6a6a7a;
-}
-
-:root[data-theme="light"] .splash__console {
-  scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
-}
-
-:root[data-theme="light"] .splash__console::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-:root[data-theme="light"] .splash-log.info { color: #16a34a; }
-:root[data-theme="light"] .splash-log.warn { color: #b8860b; }
-:root[data-theme="light"] .splash-log.error { color: #dc2626; }
-:root[data-theme="light"] .splash-log.default { color: #6a6a7a; }
-:root[data-theme="light"] .splash-log.fun { color: #7c3aed; }
-
-:root[data-theme="light"] .splash-bar {
-  border-color: rgba(0, 0, 0, 0.12);
-}
-
-:root[data-theme="light"] .splash-bar::before {
-  background: repeating-linear-gradient(90deg, transparent 0px, transparent 1px, rgba(255, 255, 255, 0.5) 1px, rgba(255, 255, 255, 0.5) 2px);
-}
-
-/* Chat phase light mode */
 :root[data-theme="light"] .splash-chat__sidebar {
   background: rgba(0, 0, 0, 0.02);
   border-right-color: rgba(0, 0, 0, 0.08);

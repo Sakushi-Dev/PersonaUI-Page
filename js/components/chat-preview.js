@@ -16,6 +16,18 @@
   var headerAvatar = document.querySelector('.chat-preview__header-avatar');
   if (!container) return;
 
+  var AVATARS = {
+    Aria: 'public/avatar/elf.jpeg',
+    Nexus: 'public/avatar/robot.jpeg',
+    Kael: 'public/avatar/demon.jpeg'
+  };
+
+  function avatarImg(name, cls) {
+    var src = AVATARS[name];
+    if (src) return '<img src="' + src + '" alt="' + name + '" class="' + cls + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
+    return name ? name[0] : '?';
+  }
+
   var conversations = [
     {
       persona: { name: 'Aria', initial: 'A' },
@@ -91,7 +103,7 @@
           var typingRow = document.createElement('div');
           typingRow.className = 'chat-preview__typing-row';
           typingRow.innerHTML =
-            '<div class="chat-preview__msg-avatar chat-preview__msg-avatar--ai">' + (msg.name ? msg.name[0] : 'A') + '</div>' +
+            '<div class="chat-preview__msg-avatar chat-preview__msg-avatar--ai">' + avatarImg(msg.name, 'chat-preview__msg-avatar-img') + '</div>' +
             '<div class="chat-preview__typing">' +
               '<div class="chat-preview__typing-dot"></div>' +
               '<div class="chat-preview__typing-dot"></div>' +
@@ -120,7 +132,7 @@
     row.className = 'chat-preview__msg-row chat-preview__msg-row--' + msg.sender;
 
     var avatarClass = msg.sender === 'ai' ? 'chat-preview__msg-avatar--ai' : 'chat-preview__msg-avatar--user';
-    var initial = msg.sender === 'ai' ? (msg.name ? msg.name[0] : 'A') : 'Y';
+    var avatarContent = msg.sender === 'ai' ? avatarImg(msg.name, 'chat-preview__msg-avatar-img') : 'Y';
 
     var senderHtml = '';
     if (msg.sender === 'ai' && msg.name) {
@@ -128,7 +140,7 @@
     }
 
     row.innerHTML =
-      '<div class="chat-preview__msg-avatar ' + avatarClass + '">' + initial + '</div>' +
+      '<div class="chat-preview__msg-avatar ' + avatarClass + '">' + avatarContent + '</div>' +
       '<div class="chat-preview__msg chat-preview__msg--' + msg.sender + '">' +
         senderHtml +
         '<div class="chat-preview__msg-text">' + msg.text + '</div>' +
@@ -143,7 +155,11 @@
     clearMessages();
     // Update header for this persona
     if (headerName) headerName.textContent = convo.persona.name;
-    if (headerAvatar) headerAvatar.textContent = convo.persona.initial;
+    if (headerAvatar) {
+      var src = AVATARS[convo.persona.name];
+      if (src) headerAvatar.innerHTML = '<img src="' + src + '" alt="' + convo.persona.name + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
+      else headerAvatar.textContent = convo.persona.initial;
+    }
 
     var delays = [400, 1800, 2200, 1800];
     for (var i = 0; i < convo.messages.length; i++) {

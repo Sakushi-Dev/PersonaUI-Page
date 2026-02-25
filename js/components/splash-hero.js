@@ -98,6 +98,12 @@
 
   // ===================== Chat Phase =====================
 
+  var AVATARS = {
+    Aria: 'public/avatar/elf.jpeg',
+    Nexus: 'public/avatar/robot.jpeg',
+    Kael: 'public/avatar/demon.jpeg'
+  };
+
   var chatConversations = [
     {
       persona: { name: 'Aria', initial: 'A' },
@@ -140,7 +146,11 @@
   }
 
   function updateChatHeader(persona) {
-    if (chatAvatar) chatAvatar.textContent = persona.initial;
+    if (chatAvatar) {
+      var src = AVATARS[persona.name];
+      if (src) chatAvatar.innerHTML = '<img src="' + src + '" alt="' + persona.name + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">';
+      else chatAvatar.textContent = persona.initial;
+    }
     if (chatName) chatName.textContent = persona.name;
   }
 
@@ -199,7 +209,7 @@
     var row = document.createElement('div');
     row.className = 'splash-chat__typing-row';
     row.innerHTML =
-      '<div class="splash-chat__msg-avatar splash-chat__msg-avatar--ai">' + (name ? name[0] : 'A') + '</div>' +
+      '<div class="splash-chat__msg-avatar splash-chat__msg-avatar--ai">' + (AVATARS[name] ? '<img src="' + AVATARS[name] + '" alt="' + name + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">' : (name ? name[0] : 'A')) + '</div>' +
       '<div class="splash-chat__typing">' +
         '<div class="splash-chat__typing-dot"></div>' +
         '<div class="splash-chat__typing-dot"></div>' +
@@ -215,11 +225,13 @@
     row.className = 'splash-chat__row splash-chat__row--' + msg.sender;
 
     var avatarCls = msg.sender === 'ai' ? 'splash-chat__msg-avatar--ai' : 'splash-chat__msg-avatar--user';
-    var initial   = msg.sender === 'ai' ? (msg.name ? msg.name[0] : 'A') : 'Y';
+    var avatarContent = msg.sender === 'ai' && AVATARS[msg.name]
+      ? '<img src="' + AVATARS[msg.name] + '" alt="' + msg.name + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">'
+      : (msg.sender === 'ai' ? (msg.name ? msg.name[0] : 'A') : 'Y');
     var bubbleCls = msg.sender === 'ai' ? 'splash-chat__bubble--ai' : 'splash-chat__bubble--user';
 
     row.innerHTML =
-      '<div class="splash-chat__msg-avatar ' + avatarCls + '">' + initial + '</div>' +
+      '<div class="splash-chat__msg-avatar ' + avatarCls + '">' + avatarContent + '</div>' +
       '<div class="splash-chat__bubble ' + bubbleCls + '">' + msg.text + '</div>';
 
     messagesEl.appendChild(row);

@@ -450,13 +450,7 @@ code {
   width: 34px;
   height: 34px;
   border-radius: var(--radius-sm);
-  background: var(--purple-gradient);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  color: #fff;
-  font-weight: 800;
+  object-fit: contain;
   box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
 }
 
@@ -631,6 +625,19 @@ code {
   max-width: 600px;
   margin: 0 auto 2.5rem;
   line-height: 1.8;
+}
+
+.hero__demo-note {
+  margin-top: 1.2rem;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.35);
+  font-style: italic;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+:root[data-theme="light"] .hero__demo-note {
+  color: rgba(0, 0, 0, 0.35);
 }
 
 .hero__actions {
