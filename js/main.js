@@ -16,9 +16,15 @@
       localStorage.setItem('personaui-page-theme', theme);
     }
 
+    // Restore saved theme (default: dark)
+    const saved = localStorage.getItem('personaui-page-theme');
+    if (saved) {
+      applyTheme(saved);
+    }
+
     btn.addEventListener('click', function () {
-      const current = document.documentElement.getAttribute('data-theme') || 'light';
-      applyTheme(current === 'light' ? 'dark' : 'light');
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      applyTheme(current === 'dark' ? 'light' : 'dark');
     });
   }
 
