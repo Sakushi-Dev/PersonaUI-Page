@@ -416,13 +416,13 @@
   // ===================== Startup Sequence =====================
 
   function runSequence() {
-    typeLine('> Starting PersonaUI v0.3.1-alpha...', 'info');
+    typeLine('> Starting PersonaUI v0.3.2-alpha...', 'info');
     typeLine('> Working directory: .../GitHub/PersonaUI', 'default');
     typeLine('', 'default');
 
     typeLine('> Checking for updates...', 'default');
     pause(400);
-    typeLine('  PersonaUI is up to date (v0.3.1-alpha).', 'info');
+    typeLine('  PersonaUI is up to date (v0.3.2-alpha).', 'info');
     typeLine('', 'default');
 
     typeLine('> Initializing databases...', 'default');
